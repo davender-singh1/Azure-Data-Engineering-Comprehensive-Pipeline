@@ -17,8 +17,30 @@ The use case for this project is building an end to end solution by ingesting th
    Step 2: Use the keys to register your integration runtime
    ![image](https://github.com/davender-singh1/Azure-Data-Engineering-Comprehensive-Pipeline/assets/106000634/18e576e0-17a4-4115-86f2-831e35e339da)
 
+4. Load data from SQL server to storage - data pipeline
+
    After successfully importing data into Data Factory using correct sql server credentials, you will be able to see the data by clicking on preview
-![image](https://github.com/davender-singh1/Azure-Data-Engineering-Comprehensive-Pipeline/assets/106000634/a3d4b1e3-b826-4b5e-86af-444b02c5ca51)
+   
+   ![image](https://github.com/davender-singh1/Azure-Data-Engineering-Comprehensive-Pipeline/assets/106000634/a3d4b1e3-b826-4b5e-86af-444b02c5ca51)
+
+   Complete the Source and Sink dataset and click on publish all to finish the pipeline.
+
+   You can go to the Monitor Tab, to check if your Pipeline is running successfully and this will transfer the data from the on-prem SQL server to the blob storage account
+
+   ![image](https://github.com/davender-singh1/Azure-Data-Engineering-Comprehensive-Pipeline/assets/106000634/1f2ccf7a-c2ba-49ea-8a15-d40eb1b4a048)
+
+5. Connect Databricks to storage
+   
+   Step 1: Create a compute cluster in Databricks Community edition
+   Step 2: Create a notebook in the databricks using python as a default language of the notebook. Then use this code with your container-name, storage-account-name, scope and key name in the required fields to mount the Databricks to the Azure Storage account:
+   ```python
+   dbutils.fs.mount(
+    source = "wasbs://<container-name>@<storage-account-name>.blob.core.windows.net",
+    mount_point = "/mnt/iotdata",
+    extra_configs = {"fs.azure.account.key.<storage.account.key.<storage-account-name>.blob.core.windows.net":dbutils.secrets.get(scope = "<scope-name", key = "<key-name")}
+)
+   ```
+   
 
 
    
