@@ -42,8 +42,10 @@ The use case for this project is building an end to end solution by ingesting th
     mount_point = "/mnt/iotdata",
     extra_configs = {"fs.azure.account.key.<storage-account-name>.blob.core.windows.net":dbutils.secrets.get(scope = "<scope-name", key = "<key-name")}
     )
+   ```
 
    Run this command to check if you have successfully mounted the data:
+   
    ```python
    dbutils.fs.ls("/mnt/iotdata")
    ```
@@ -52,7 +54,22 @@ The use case for this project is building an end to end solution by ingesting th
 
    ![image](https://github.com/davender-singh1/Azure-Data-Engineering-Comprehensive-Pipeline/assets/106000634/195a6895-ad23-4657-ae1a-15d1a1f41c13)
 
-   
+
+6. Create a dataframe in it using PySpark to read the data, using this command:
+
+```python
+df = spark.read.format("csv").options(header='True',inferSchema="True").load('dbfs:/mnt/iotdata/dbo.pizza_sales.txt')
+```
+
+(In the load(), you have enter the location that you can get after mounting the data)
+Use this command to display the data:
+
+```python
+display(df)
+```
+![image](https://github.com/davender-singh1/Azure-Data-Engineering-Comprehensive-Pipeline/assets/106000634/27dd5437-f1a5-4e23-89e5-40742744862f)
+
+
 
 
    
