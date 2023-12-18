@@ -32,14 +32,25 @@ The use case for this project is building an end to end solution by ingesting th
 5. Connect Databricks to storage
    
    Step 1: Create a compute cluster in Databricks Community edition
+   
    Step 2: Create a notebook in the databricks using python as a default language of the notebook. Then use this code with your container-name, storage-account-name, scope and key name in the required fields to mount the Databricks to the Azure Storage account:
+   You can also use Access keys of the storage account instead of creating a scope and key. And in the mount point you have write the location of the blob storage or raw container where you want to mount this.
+   
    ```python
    dbutils.fs.mount(
     source = "wasbs://<container-name>@<storage-account-name>.blob.core.windows.net",
     mount_point = "/mnt/iotdata",
-    extra_configs = {"fs.azure.account.key.<storage.account.key.<storage-account-name>.blob.core.windows.net":dbutils.secrets.get(scope = "<scope-name", key = "<key-name")}
+    extra_configs = {"fs.azure.account.key.<storage-account-name>.blob.core.windows.net":dbutils.secrets.get(scope = "<scope-name", key = "<key-name")}
 )
-   ```
+
+   Run this command to check if you have successfully mounted the data:
+   ```python
+   dbutils.fs.ls("/mnt/iotdata")
+
+   After successfully doing it, we will be able to fetch the data location where it's mounted using the above command.
+
+   ![image](https://github.com/davender-singh1/Azure-Data-Engineering-Comprehensive-Pipeline/assets/106000634/195a6895-ad23-4657-ae1a-15d1a1f41c13)
+
    
 
 
