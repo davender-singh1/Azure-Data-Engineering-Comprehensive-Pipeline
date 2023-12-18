@@ -69,6 +69,36 @@ display(df)
 ```
 ![image](https://github.com/davender-singh1/Azure-Data-Engineering-Comprehensive-Pipeline/assets/106000634/27dd5437-f1a5-4e23-89e5-40742744862f)
 
+Now, we will create a TempView table to be able to run SQL queries on the dataframe, using this command:
+
+```python
+df.createOrReplaceTempView("pizza_sales_analysis")
+```
+After creating a TempView, you can use Spark SQL to query the data.
+
+Now we will focus on aggregating the sales data from the pizza_sales_analysis table. The aim is to gain insights into pizza sales distribution by various dimensions such as time and pizza characteristics.
+
+The provided SQL query serves to aggregate order data to summarize key performance metrics. These metrics are crucial for understanding sales trends and customer preferences on a granular level.
+The query groups the data by month, day, hour of order, and pizza attributes to provide a multi-dimensional view of the sales data. This allows for a comprehensive analysis of sales patterns.
+
+```sql
+%sql
+SELECT
+  COUNT(DISTINCT order_id) AS order_id,
+  SUM(quantity) AS quantity,
+  DATE_FORMAT(order_date, 'MMM') AS month_name,
+  DATE_FORMAT(order_date, 'EEEE') AS day_name,
+  HOUR(order_time) AS order_time,
+  SUM(unit_price) AS unit_price,
+  SUM(total_price) AS total_sales,
+  pizza_size,
+  pizza_category,
+  pizza_name
+FROM pizza_sales_analysis
+GROUP BY month_name, day_name, order_time, pizza_size, pizza_category, pizza_name
+```
+
+
 
 
 
