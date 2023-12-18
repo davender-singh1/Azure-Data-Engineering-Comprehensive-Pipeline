@@ -47,6 +47,7 @@ The use case for this project is building an end to end solution by ingesting th
    ```python
    dbutils.fs.ls("/mnt/iotdata")
 
+
    After successfully doing it, we will be able to fetch the data location where it's mounted using the above command.
 
    ![image](https://github.com/davender-singh1/Azure-Data-Engineering-Comprehensive-Pipeline/assets/106000634/195a6895-ad23-4657-ae1a-15d1a1f41c13)
