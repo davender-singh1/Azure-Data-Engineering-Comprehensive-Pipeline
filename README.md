@@ -11,8 +11,14 @@ The use case for this project is building an end to end solution by ingesting th
 3. Create Azure Data Factory then Open the Data Factory studio
    
    Here you can create a pipeline and move data from our on-prem sql server to the cloud and to do that complete the Integration runtime setup.
+   
    Step 1: Download and install integration runtime
+   
    Step 2: Use the keys to register your integration runtime
    ![image](https://github.com/davender-singh1/Azure-Data-Engineering-Comprehensive-Pipeline/assets/106000634/18e576e0-17a4-4115-86f2-831e35e339da)
+
+   After successfully importing data into Data Factory using correct sql server credentials, you will be able to see the data by clicking on preview
+![image](https://github.com/davender-singh1/Azure-Data-Engineering-Comprehensive-Pipeline/assets/106000634/a3d4b1e3-b826-4b5e-86af-444b02c5ca51)
+
 
    
