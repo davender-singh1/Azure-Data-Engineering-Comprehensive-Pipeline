@@ -41,12 +41,12 @@ The use case for this project is building an end to end solution by ingesting th
     source = "wasbs://<container-name>@<storage-account-name>.blob.core.windows.net",
     mount_point = "/mnt/iotdata",
     extra_configs = {"fs.azure.account.key.<storage-account-name>.blob.core.windows.net":dbutils.secrets.get(scope = "<scope-name", key = "<key-name")}
-)
+    )
 
    Run this command to check if you have successfully mounted the data:
    ```python
    dbutils.fs.ls("/mnt/iotdata")
-
+   ```
 
    After successfully doing it, we will be able to fetch the data location where it's mounted using the above command.
 
