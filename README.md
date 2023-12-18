@@ -98,8 +98,63 @@ FROM pizza_sales_analysis
 GROUP BY month_name, day_name, order_time, pizza_size, pizza_category, pizza_name
 ```
 
+7. Integrating Databricks Aggregated Data with Power BI
+   To visualize the aggregated pizza sales data and gain interactive insights, the data is transferred from Databricks to Power BI, a business analytics service by Microsoft.
+   The purpose of this integration is to leverage Power BI's data visualization and business intelligence capabilities. This allows for the creation of interactive reports and dashboards based on the aggregated sales data from Databricks.
+   Steps to Connect Databricks to Power BI
+   
+   Power BI Get Data: Start by opening Power BI Desktop and navigate to the 'Home' tab. Click on 'Get Data' to initiate the process of importing data.
+
+   Data Source Selection: In the 'Get Data' window, select 'Azure' from the categories on the left and then choose 'Azure Databricks'. Click 'Connect' to proceed.
+
+   Databricks Connection Details: Enter the details required to connect to your Databricks cluster:
+   
+    -The Server Hostname (URL of the Databricks cluster)
+    -HTTP Path from the Databricks cluster settings
+    -Personal Access Token for authentication
+   
+    Importing Data: Once connected, Power BI will display a navigator pane where you can select the data you wish to import. Choose the aggregated table that was created using the Spark SQL query in Databricks.
+   
+    Loading Data: After selecting the required table, click 'Load' to import the data into Power BI Desktop. This may take some time depending on the size of the data.
+   
+    Building Reports: With the data loaded in Power BI, you can now use the drag-and-drop functionality to create reports and dashboards that provide actionable insights.
 
 
+This is the Power BI Sales Dashboard that I created:
 
+![image](https://github.com/davender-singh1/Azure-Data-Engineering-Comprehensive-Pipeline/assets/106000634/5dead0a3-c939-49e6-afb6-fa8400cc26a3)
+
+
+The dashboard provides a comprehensive overview of sales performance across multiple dimensions.
+
+Dashboard Components:
+
+KPIs: At the top, Key Performance Indicators (KPIs) are presented, including 'total pizza sold', 'total order', and 'total sales', to provide a quick snapshot of overall sales health.
+
+Sales by Month and Day: Below the KPIs, bar charts display 'total order' and 'total sales' by 'month_name' and 'day_name', offering insights into sales distribution over time.
+
+Sales by Pizza Size: A pie chart breaks down 'total_sales' by 'pizza_size', illustrating the popularity and revenue contribution of each size category.
+
+Sales by Pizza Category: Another pie chart shows 'total_sales' by 'pizza_category', allowing for an analysis of sales by product line.
+
+Sales by Pizza Name: Finally, a horizontal bar chart ranks 'total_sales' by 'pizza_name', highlighting individual product performance.
+
+Data Visualization Process:
+
+Data Import: The aggregated table from Databricks was imported into Power BI using the 'Get Data' functionality, connecting directly to the Databricks cluster.
+
+Data Modeling: The data was then modeled to create relationships and calculated columns as needed for more in-depth analysis.
+
+KPI Visualization: KPIs were created using the Card visualization in Power BI, providing at-a-glance metrics of critical data points.
+
+Time-based Analysis: Bar charts were used to visualize sales trends over months and days. These visualizations were designed to allow for easy comparison across time periods.
+
+Categorical Analysis: Pie charts were chosen to represent the sales distribution among different pizza sizes and categories to quickly understand the revenue composition.
+
+Product Performance: A horizontal bar chart was employed to show the sales performance of individual pizza names, sorted by total sales to identify best-sellers.
+
+Interactivity: Slicers were added for 'month_name', 'day_name', and 'order_time' to enable interactive filtering, allowing users to drill down into the data.
+
+Styling: The dashboard was styled for readability and visual appeal, with consistent color coding to facilitate quick interpretation of the data.
 
    
